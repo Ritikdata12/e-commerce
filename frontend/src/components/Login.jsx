@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import { UserContext } from '../App'; 
-// import Footer from '../components/Footer';
-// import Header from '../components/Header';
+
 import "./Register.css";
 
 
@@ -26,39 +25,10 @@ const Login = () => {
     return true;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
 
-    try {
-      const response = await axios.post('http://localhost:5000/api/user/login', {
-        email,
-        password,
-      });
-
-      if (response.status === 201 && response.data) {
-        const userData = response.data; 
-        setUser(userData);
-        console.log('User:', userData);  
-        console.log(userData.email);
-
-        localStorage.setItem('user', JSON.stringify(userData));
-
-
-        alert('Login successful');
-      } else {
-        setErrorMessage('Login failed');
-      }
-
-    } catch (err) {
-      setErrorMessage('An error occurred during login: ' + err.message);
-    }
-  };
 
   return (
     <>
-      {/* <Header /> */}
       <div className="cont4">
       <Container>
         <Row className="justify-content-md-center">
@@ -67,7 +37,7 @@ const Login = () => {
 
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 
-            <Form onSubmit={handleSubmit}>
+            <Form>
               <Form.Group controlId="formEmail" className="mb-3">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -90,7 +60,6 @@ const Login = () => {
                 />
               </Form.Group>
 
-              {/* Radio buttons for login type */}
              
 
               <div className="d-flex justify-content-between">
@@ -115,7 +84,6 @@ const Login = () => {
         </Row>
       </Container>
         </div>
-      {/* <Footer /> */}
     </>
   );
 };

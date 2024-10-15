@@ -6,7 +6,7 @@
 }
 
 .carousel-item {
-    height: 80vh; /* Set a larger height for a better visual */
+    height: 80vh;
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -61,7 +61,7 @@
 
 @media screen and (max-width: 908px) {
     .carousel-item {
-        height: 60vh; /* Reduce height for smaller screens */
+        height: 60vh; 
     }
     
     .carousel-item .containerss {

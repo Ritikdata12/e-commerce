@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
+
 import "./Register.css";
+import Header from './Header';
 
 
 const Register = () => {
@@ -32,52 +32,21 @@ const Register = () => {
     return true;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      const response = await axios.post('http://localhost:5000/api/user/register', {
-        name: name,
-        email: email,
-        gender: gender,
-        password: password,
-      });
-
-      if (response.status === 201) {
-        console.log(response.data);
-        setSuccessMessage('Registration successful!');
-        setErrorMessage(''); 
-      } else {
-        setErrorMessage('Registration failed, please try again.');
-      }
-    } catch (err) {
-      setErrorMessage('Error during registration: ' + err.message);
-      setSuccessMessage('');
-    }
-
-    setname('');
-    setEmail('');
-    setPassword('');
-  };
+ 
 
   return (
     <>
-    {/* <Header/> */}
+    <Header/>
     <div className="cont4">
-      <Container>
         <Row className="justify-content-md-center">
-          <Col md={6} style={{border: "2px solid blue" , height: "350px", background: "white"}}>
+          <Col md={6} style={{border: "2px solid blue" , height: "470px", background: "white"}}>
             <h3 className="text-center">Register</h3>
 
             {successMessage && <Alert variant="success">{successMessage}</Alert>}
 
             {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
 
-            <Form onSubmit={handleSubmit}>
+            <Form>
   <Form.Group controlId="formUsername" className="mb-3">
     <Form.Label>name</Form.Label>
     <Form.Control
@@ -139,10 +108,8 @@ const Register = () => {
 
           </Col>
         </Row>
-      </Container>
       </div>
 
-      {/* <Footer/> */}
     </>
   );
 };

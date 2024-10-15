@@ -18,7 +18,7 @@ function App() {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
-      console.log('User from localStorage:', parsedUser); // Log this to verify
+      console.log('User from localStorage:', parsedUser);
       setUser(parsedUser);
     } else {
       console.log('No user found in localStorage');
